@@ -3,25 +3,34 @@
 #include <string.h>
 #include <math.h>
 #include "validation.c"
-#include "add.c"
-// char *normalization(char *num)
-// {
-//     // if (/* condition */)
-//     // {
-//     //     /* code */
-//     // }
-// }
+#include "mathematic.c"
+
 int main(int argc, char const *argv[])
 {
 
-    char *a = (char *)argv[1];
-    char *op = (char *)argv[2];
-    char *b = (char *)argv[3];
+    // char *a = (char *)argv[1];
+    // char *op = (char *)argv[2];
+    // char *b = (char *)argv[3];
 
-    // char *a = "99";
-    // char *op = "+";
-    // char *b = "9";
-    // printf("%s\n", a);
+    bool sign = false;
+
+    int loc_of_e_a = -1;
+    int loc_of_e_b = -1;
+
+    int loc_of_dot_a = -1;
+    int loc_of_dot_b = -1;
+
+    char *e_for_dec_a = NULL;
+    char *e_for_dec_b = NULL;
+
+    char *e_tot = NULL;
+
+    char *e_of_a = "0";
+    char *e_of_b = "0";
+
+    char *a = "-24352.0002";
+    char *op = "-";
+    char *b = "-3.3";
 
     if (!isANumber(a) || !(strcmp(op, "*") || strcmp(op, "+") || strcmp(op, "-") || strcmp(op, "/")) || !isANumber(b))
     {
@@ -36,74 +45,273 @@ int main(int argc, char const *argv[])
     }
     a = deleteUnimportantChar(a);
     b = deleteUnimportantChar(b);
-    // if (is)
+
+    if (isInt(a))
+    {
+        // int i;
+        // char *newA = (char *)malloc(sizeof(char *) * (strlen(a) + 3));
+        // char *newAhelp = (char *)malloc(sizeof(char *) * (strlen(a) + 3));
+        // for (i = 0; i < strlen(a); i++)
+        // {
+        //     newA[i] = a[i];
+        // }
+        // newA[i] = '.';
+        // newA[i + 1] = '0';
+        // snprintf(newAhelp, strlen(a) + 3, "%s", newA);
+        // a = newAhelp;
+    }
+    else if (isDecimal(a))
+    {
+        for (int i = 0; i < strlen(a); i++)
+        {
+            if (a[i] == '.')
+            {
+                loc_of_dot_a = i;
+                break;
+            }
+        }
+        if (loc_of_dot_a > 0)
+        {
+            // a = delete_char(a, loc_of_dot_a);
+        }
+    }
+    else if (isScientific(a))
+    {
+        char *prefixDigitforA;
+        for (int i = 0; i < strlen(a); i++)
+        {
+            if (a[i] == 'e')
+            {
+                loc_of_e_a = i;
+                break;
+            }
+        }
+        // e_of_a = (char *)malloc(sizeof(char) * (strlen(a) - loc_of_e_a - 1));
+        e_of_a = a + loc_of_e_a + 1;
+        prefixDigitforA = (char *)malloc(sizeof(char *) * (loc_of_e_a));
+        snprintf(prefixDigitforA, loc_of_e_a + 1, "%s", a);
+        printf("%s\n", prefixDigitforA);
+        a = prefixDigitforA;
+        if (isInt(a))
+        {
+            // int i;
+            // char *newA = (char *)malloc(sizeof(char *) * (strlen(a) + 3));
+            // for (i = 0; i < strlen(a); i++)
+            // {
+            //     newA[i] = a[i];
+            // }
+            // newA[i] = '.';
+            // newA[i + 1] = '0';
+            // snprintf(a, strlen(a) + 3, "%s", newA);
+        }
+        else
+        {
+            for (int i = 0; i < strlen(a); i++)
+            {
+                if (a[i] == '.')
+                {
+                    loc_of_dot_a = i;
+                    break;
+                }
+            }
+            if (loc_of_dot_a > 0)
+            {
+                // a = delete_char(a, loc_of_dot_a);
+            }
+        }
+    }
+    if (isInt(b))
+    {
+        // int i;
+        // char *newB = (char *)malloc(sizeof(char *) * (strlen(b) + 3));
+        // char *newBhelp = (char *)malloc(sizeof(char *) * (strlen(b) + 3));
+        // for (i = 0; i < strlen(b); i++)
+        // {
+        //     newB[i] = b[i];
+        // }
+        // newB[i] = '.';
+        // newB[i + 1] = '0';
+        // snprintf(newBhelp, strlen(b) + 3, "%s", newB);
+        // b = newBhelp;
+    }
+    else if (isDecimal(b))
+    {
+        for (int i = 0; i < strlen(b); i++)
+        {
+            if (b[i] == '.')
+            {
+                loc_of_dot_b = i;
+                break;
+            }
+        }
+        // if (loc_of_dot_b > 0)
+        // {
+        //     // b = delete_char(b, loc_of_dot_b);
+        // }
+    }
+    else if (isScientific(b))
+    {
+        char *prefixDigit;
+        for (int i = 0; i < strlen(b); i++)
+        {
+            if (b[i] == 'e')
+            {
+                loc_of_e_b = i;
+                break;
+            }
+        }
+        // e_of_b = (char *)malloc(sizeof(char) * (strlen(b) - loc_of_e_b - 1));
+        e_of_b = b + loc_of_e_b + 1;
+        prefixDigit = (char *)malloc(sizeof(char *) * (loc_of_e_b));
+        snprintf(prefixDigit, loc_of_e_b + 1, "%s", b);
+        printf("%s\n", prefixDigit);
+        b = prefixDigit;
+        if (isInt(b))
+        {
+            // int i;
+            // char *newB = (char *)malloc(sizeof(char *) * (strlen(b) + 3));
+            // for (i = 0; i < strlen(b); i++)
+            // {
+            //     newB[i] = b[i];
+            // }
+            // newB[i] = '.';
+            // newB[i + 1] = '0';
+            // snprintf(b, strlen(b) + 3, "%s", newB);
+        }
+        else
+        {
+            for (int i = 0; i < strlen(b); i++)
+            {
+                if (b[i] == '.')
+                {
+                    loc_of_dot_b = i;
+                    break;
+                }
+            }
+            // if (loc_of_dot_b > 0)
+            // {
+            //     // b = delete_char(b, loc_of_dot_b);
+            // }
+        }
+    }
+
+    // char[]
+    printf("%s\n", a);
+    printf("%s\n", b);
+    // if (strcmp(e_of_a, e_of_b) != 0)
     // {
-    //     /* code */
+    //     if (compare(e_of_a, e_of_b) == 1)
+    //     {
+    //         /* code */
+    //     }
     // }
+
     switch (op[0])
     {
     case '+':
-        // double aa;
-        // double bb;
-        
-        // if (isInt(a) || isDecimal(a))
+    {
+        char *answer;
+        // if (loc_of_dot_a > 0 || loc_of_dot_b > 0)
         // {
-        //     aa = atof(a);
-        // }
-        // else
-        // {
-        //     char prefixDigit1[50];
-        //     int loc_of_e = -1;
-        //     for (int i = 0; i < strlen(a); i++)
-        //     {
-        //         if (a[i] == 'e')
-        //         {
-        //             loc_of_e = i + 1;
-        //             break;
-        //         }
-        //     }
-        //     double multiplyBy = atof(a + loc_of_e);
-        //     snprintf(prefixDigit1, loc_of_e , "%s", a);
-          
-        //     aa = atof(prefixDigit1) * pow(10, multiplyBy);
-        // }
+        int aTrailing = 0;
+        int bTrailing = 0;
+        if (loc_of_dot_a > 0)
+        {
+            aTrailing = strlen(a) - loc_of_dot_a - 1;
+            a = delete_char(a, loc_of_dot_a);
+        }
+        if (loc_of_dot_b > 0)
+        {
+            bTrailing = strlen(b) - loc_of_dot_b - 1;
+            b = delete_char(b, loc_of_dot_b);
+        }
+        if (bTrailing > aTrailing)
+        {
+            a = addingMoreTrailingZero(a, bTrailing - aTrailing);
+        }
+        if (aTrailing > bTrailing)
+        {
+            b = addingMoreTrailingZero(b, aTrailing - bTrailing);
+        }
 
-        // if (isInt(b) || isDecimal(b))
-        // {
-        //     bb = atof(b);
-        // }
-        // else
-        // {
-        //     char prefixDigit[1];
-        //     int loc_of_e = -1;
-        //     for (int i = 0; i < strlen(b); i++)
-        //     {
-        //         if (b[i] == 'e')
-        //         {
-        //             loc_of_e = i + 1;
-        //             break;
-        //         }
-        //     }
-        //     double multiplyBy = atof(b + loc_of_e);
+        answer = addition(a, b);
 
-        //     snprintf(prefixDigit, loc_of_e , "%s", b);
+        if (bTrailing > aTrailing)
+        {
+            answer = insertDotAtIndex(answer, strlen(answer) - bTrailing);
+        }
 
-        //     bb = atof(prefixDigit) * pow(10, multiplyBy);
-        // }
-        // printf("%lf + %lf = %lf\n", aa,bb,aa + bb);
-        printf("%s\n",addPositiveInteger(a,b));
-        break;
+        if (aTrailing > bTrailing)
+        {
+            answer = insertDotAtIndex(answer, strlen(answer) - aTrailing);
+        }
+
+        printf("%s\n", answer);
+    }
+    break;
     case '-':
-        /* code */
-        break;
-    case '*':
-        /* code */
-        break;
-    case '/':
-        /* code */
-        break;
+    {
+        char *answer;
+        // if (loc_of_dot_a > 0 || loc_of_dot_b > 0)
+        // {
+        int aTrailing = 0;
+        int bTrailing = 0;
+        if (loc_of_dot_a > 0)
+        {
+            aTrailing = strlen(a) - loc_of_dot_a - 1;
+            a = delete_char(a, loc_of_dot_a);
+        }
+        if (loc_of_dot_b > 0)
+        {
+            bTrailing = strlen(b) - loc_of_dot_b - 1;
+            b = delete_char(b, loc_of_dot_b);
+        }
+        if (bTrailing > aTrailing)
+        {
+            a = addingMoreTrailingZero(a, bTrailing - aTrailing);
+        }
+        if (aTrailing > bTrailing)
+        {
+            b = addingMoreTrailingZero(b, aTrailing - bTrailing);
+        }
 
+        answer = substraction(a, b);
+
+        if (bTrailing > aTrailing)
+        {
+            answer = insertDotAtIndex(answer, strlen(answer) - bTrailing);
+        }
+
+        if (aTrailing > bTrailing)
+        {
+            answer = insertDotAtIndex(answer, strlen(answer) - aTrailing);
+        }
+
+        printf("%s\n", answer);
+        break;
+    }
+    case '*':
+    {
+        int aTrailing = 0;
+        int bTrailing = 0;
+        if (loc_of_dot_a > 0)
+        {
+            aTrailing = strlen(a) - loc_of_dot_a - 1;
+            a = delete_char(a, loc_of_dot_a);
+        }
+        if (loc_of_dot_b > 0)
+        {
+            bTrailing = strlen(b) - loc_of_dot_b - 1;
+            b = delete_char(b, loc_of_dot_b);
+        }
+        printf("%s\n", multiplication(a, b));
+        break;
+    }
+    case '/':
+        printf("%s\n", division(a, b));
+        break;
     default:
+
         break;
     }
 

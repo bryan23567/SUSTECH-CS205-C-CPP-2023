@@ -99,7 +99,7 @@ bool isInt(char *num)
 {
     while (*num)
     {
-        if (*num < '0' || *num > '9')
+        if (*num < '0' || *num > '9' && !(num[0] == '-' || num[0] == '+'))
         {
             return false;
         }
@@ -111,7 +111,7 @@ bool isDecimal(char *num)
 {
     while (*num)
     {
-        if ((*num < '0' || *num > '9') && *num != '.')
+        if ((*num < '0' || *num > '9') && *num != '.' && !(num[0] == '-' || num[0] == '+'))
         {
 
             return false;
@@ -124,7 +124,7 @@ bool isScientific(char *num)
 {
     while (*num)
     {
-        if ((*num < '0' || *num > '9') && (*num != '.' || *num != 'e'))
+        if ((*num < '0' || *num > '9') && (*num != 'e' && *num != '.'))
         {
             return false;
         }
@@ -135,14 +135,37 @@ bool isScientific(char *num)
 
 char *deleteUnimportantChar(char *num)
 {
+    bool sign = false;
     int pos = 0;
+    if (num[0] == '-')
+    {
+        num = num + 1;
+        sign = true;
+    };
+
+    if (strlen(num) > 2 && num[0] == '0' && num[1] == '.')
+    {
+        if (sign)
+        {
+            char *res_new = (char *)malloc(sizeof(char) * (strlen(num) + 2));
+            res_new[0] = '-';
+            for (int i = 0; i < strlen(num); i++)
+            {
+                res_new[i + 1] = num[i];
+            }
+            res_new[strlen(num) + 1] = '\0';
+            return res_new;
+        }
+        return num;
+    }
+
     if (num[0] == '+') // delete the leading plus in a
     {
         num[0] = '0';
     }
     for (int i = 0; i < strlen(num); i++)
     {
-        if (num[i]!= '0')
+        if (num[i] != '0')
         {
             break;
         }
@@ -150,5 +173,67 @@ char *deleteUnimportantChar(char *num)
     }
 
     num = num + pos;
+    if (sign)
+    {
+        char *res_new = (char *)malloc(sizeof(char) * (strlen(num) + 2));
+        res_new[0] = '-';
+        for (int i = 0; i < strlen(num); i++)
+        {
+            res_new[i + 1] = num[i];
+        }
+        res_new[strlen(num) + 1] = '\0';
+        return res_new;
+    }
     return num;
+}
+
+char *insertDotAtIndex(char *num, int index)
+{
+    char *result = (char *)malloc(sizeof(char) * (strlen(num) + 1));
+    char *resultHelp = (char *)malloc(sizeof(char) * (strlen(num) + 1));
+    int i;
+    for (i = 0; i < index; i++)
+    {
+        result[i] = num[i];
+    }
+    result[i] = '.';
+    for (++i; i < strlen(num) + 1; i++)
+    {
+        result[i] = num[i - 1];
+    }
+    snprintf(resultHelp, strlen(num) + 2, result);
+    return resultHelp;
+}
+
+char *addingMoreTrailingZero(char *before, int howMany)
+{
+    char *result = (char *)malloc(sizeof(char) * (strlen(before) + howMany));
+    char *resultHelp = (char *)malloc(sizeof(char) * (strlen(before) + howMany));
+    int i;
+    for (i = 0; i < strlen(before); i++)
+    {
+        result[i] = before[i];
+    }
+    for (i = strlen(before); i < strlen(before) + howMany; i++)
+    {
+        result[i] = '0';
+    }
+
+    snprintf(resultHelp, strlen(before) + howMany + 1, result);
+    return resultHelp;
+}
+char *delete_char(char *str, int k)
+{
+    char *temp = (char *)malloc(sizeof(char) * (strlen(str) - 1));
+    char *tempHelp = (char *)malloc(sizeof(char) * (strlen(str) - 1));
+    for (int i = 0; i < k; i++)
+    {
+        temp[i] = str[i];
+    }
+    for (int i = k + 1; i < strlen(str); i++)
+    {
+        temp[i - 1] = str[i];
+    }
+    snprintf(tempHelp, (strlen(str)), temp);
+    return tempHelp;
 }
