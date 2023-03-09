@@ -11,3 +11,5 @@ char *multiplication(char *a, char *b);
 
 char *divInteger(char *a, char *b);
 char *division(char *a, char *b);
+
+char *reverse(char *num);

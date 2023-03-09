@@ -77,16 +77,7 @@ char *addition(char *a, char *b)
         {
             return subInteger(b, a + 1);
         }
-        // char *result = addInteger(a + 1, b);
-        // char *res_new = (char *)malloc(sizeof(char) * (strlen(result) + 2));
-        // res_new[0] = '-';
-        // for (int i = 0; i < strlen(result); i++)
-        // {
-        //     res_new[i + 1] = result[i];
-        // }
-        // res_new[strlen(result) + 1] = '\0';
 
-        // return res_new;
     }
     if (b[0] == '-' && a[0] != '-') // a+(-b) = a-b
     {
@@ -128,16 +119,8 @@ char *addInteger(char *a, char *b)
     char *reva = reverse(a);
     char *revb = reverse(b);
 
-    // char *result;
-    // a[0] = '9';
+    char *result = (char *)malloc(sizeof(char) * (strlen(a) > strlen(b) ? strlen(a) + 2 : strlen(b) + 2));
 
-    // reverse(b);
-    // printf("%d\n", strlen(a));
-    // printf("%d\n", strlen(b));
-    char *result = (char *)malloc(sizeof(char) * (strlen(a) > strlen(b) ? strlen(a) + 1 : strlen(b) + 1));
-    char *resultHelp = (char *)malloc(sizeof(char) * (strlen(a) > strlen(b) ? strlen(a) + 1 : strlen(b) + 1));
-    // result = (char *)malloc(sizeof(char) * 6);
-    // printf("%d\n", strlen(result));
     int carry = 0;
     if (strlen(a) < strlen(b))
     {
@@ -182,9 +165,9 @@ char *addInteger(char *a, char *b)
         }
     }
 
-    snprintf(resultHelp, (strlen(a) > strlen(b) ? strlen(a) + 1 : strlen(b) + 1) + 1, "%s", result);
+    result[strlen(a) > strlen(b) ? strlen(a) + 1 : strlen(b) + 1] = '\0';
     int deleteSuffix = 0;
-    char *answer = reverse(resultHelp);
+    char *answer = reverse(result);
     for (int i = 0; i < strlen(answer); i++)
     {
         if (answer[i] != '0' || i == strlen(answer) - 1)
@@ -261,22 +244,11 @@ char *substraction(char *a, char *b)
 char *subInteger(char *a, char *b) // a>b
 {
 
-    // if (a[0] == '-' && b[0] == '-') // -a+b
-    // {
-    //     return addInteger(b + 1, a);
-    // }
     bool carry = false;
     char *reva = reverse(a);
     char *revb = reverse(b);
 
-    // reverse(revb);
     char *result = (char *)malloc(sizeof(char) * (strlen(a) + 1));
-    // char *resultHelp = (char *)malloc(sizeof(char) * (strlen(a) > strlen(b) ? strlen(a) : strlen(b)));
-    // char *result;
-    // a[0] = '9';
-
-    // if (strlen(revb) < strlen(reva))
-    // {
 
     for (int i = 0; i < strlen(revb); i++)
     {
@@ -311,88 +283,7 @@ char *subInteger(char *a, char *b) // a>b
         }
         result[i] = first + '0';
     }
-    // }
-    // else
-    // {
-    //     if (strlen(reva) == strlen(revb))
-    //     {
-    //         if (compare(a, b) == 1)
-    //         {
-    //             for (int i = 0; i < strlen(reva); i++)
-    //             {
-    //                 int first = reva[i] - '0';
-    //                 int second = revb[i] - '0';
-    //                 if (carry && first > 0)
-    //                 {
-    //                     first--;
-    //                     carry = false;
-    //                 }
-
-    //                 if (first < second)
-    //                 {
-    //                     first += 10;
-    //                     carry = true;
-    //                 }
-
-    //                 result[i] = (first - second) + '0';
-    //             }
-    //         }
-    //         else
-    //         {
-    //             for (int i = 0; i < strlen(reva); i++)
-    //             {
-    //                 int first = revb[i] - '0';
-    //                 int second = reva[i] - '0';
-    //                 if (carry && first > 0)
-    //                 {
-    //                     first--;
-    //                     carry = false;
-    //                 }
-
-    //                 if (first < second)
-    //                 {
-    //                     first += 10;
-    //                     carry = true;
-    //                 }
-
-    //                 result[i] = (first - second) + '0';
-    //             }
-    //         }
-    //     }
-    //     else
-    //     {
-    //         for (int i = 0; i < strlen(reva); i++)
-    //         {
-    //             int first = revb[i] - '0';
-    //             int second = reva[i] - '0';
-    //             if (carry && first > 0)
-    //             {
-    //                 first--;
-    //                 carry = false;
-    //             }
-
-    //             if (first < second)
-    //             {
-    //                 first += 10;
-    //                 carry = true;
-    //             }
-
-    //             result[i] = (first - second) + '0';
-    //         }
-
-    //         for (int i = strlen(reva); i < strlen(revb); i++)
-    //         {
-    //             int first = revb[i] - '0';
-    //             if (carry && first > 0)
-    //             {
-    //                 first--;
-    //                 carry = false;
-    //             }
-    //             result[i] = first + '0';
-    //         }
-    //     }
-    // }
-
+    
     result[strlen(a)] = '\0';
     int deleteSuffix = 0;
     char *answer = reverse(result);
@@ -452,11 +343,6 @@ char *multiplyInt(char *a, char *b)
     char *reva = reverse(a);
     char *revb = reverse(b);
 
-    // char *result;
-    // a[0] = '9';
-
-    // printf("%d\n", strlen(a));
-    // printf("%d\n", strlen(a));
     int *revres = (int *)calloc(strlen(a) + strlen(b), sizeof(int));
     char *revresChar = (char *)malloc((strlen(a) + strlen(b) + 1) * sizeof(char));
 
@@ -579,19 +465,6 @@ char *divInteger(char *num, char *div)
     {
         result[i] = temp.quotient[i];
     }
-
-    // char *decNum = (char *)malloc(sizeof(char) * (strlen(temp.remainder) + 1));
-    // int k;
-    // for (k = 0; k < strlen(temp.remainder); k++)
-    // {
-    //     decNum[k] = temp.remainder[k];
-    // }
-    // for (; k < strlen(temp.remainder) + 1; k++)
-    // {
-    //     decNum[k] = '0';
-    // }
-
-    // decNum[k] = '\0';
 
     if (strcmp(temp.remainder, "0") == 0)
     {

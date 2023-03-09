@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "validation.h"
 bool isANumber(char *num)
 {
@@ -122,13 +123,22 @@ bool isDecimal(char *num)
 }
 bool isScientific(char *num)
 {
+    int i = 0;
     while (*num)
     {
+        if (*num == '-' && (i == 0 || *(num - 1) == 'e'))
+        {
+            *num++;
+            i++;
+            continue;
+        }
+
         if ((*num < '0' || *num > '9') && (*num != 'e' && *num != '.'))
         {
             return false;
         }
         *num++;
+        i++;
     }
     return true;
 }
@@ -163,7 +173,7 @@ char *deleteUnimportantChar(char *num)
     {
         num[0] = '0';
     }
-    for (int i = 0; i < strlen(num); i++)
+    for (int i = 0; i < strlen(num)-1; i++)
     {
         if (num[i] != '0')
         {
@@ -189,8 +199,8 @@ char *deleteUnimportantChar(char *num)
 
 char *insertDotAtIndex(char *num, int index)
 {
-    char *result = (char *)malloc(sizeof(char) * (strlen(num) + 1));
-    char *resultHelp = (char *)malloc(sizeof(char) * (strlen(num) + 1));
+    char *result = (char *)malloc(sizeof(char) * (strlen(num) + 2));
+
     int i;
     for (i = 0; i < index; i++)
     {
@@ -201,14 +211,14 @@ char *insertDotAtIndex(char *num, int index)
     {
         result[i] = num[i - 1];
     }
-    snprintf(resultHelp, strlen(num) + 2, result);
-    return resultHelp;
+    result[i] = '\0';
+    return result;
 }
 
 char *addingMoreTrailingZero(char *before, int howMany)
 {
-    char *result = (char *)malloc(sizeof(char) * (strlen(before) + howMany));
-    char *resultHelp = (char *)malloc(sizeof(char) * (strlen(before) + howMany));
+    char *result = (char *)malloc(sizeof(char) * (strlen(before) + howMany + 1));
+
     int i;
     for (i = 0; i < strlen(before); i++)
     {
@@ -219,13 +229,13 @@ char *addingMoreTrailingZero(char *before, int howMany)
         result[i] = '0';
     }
 
-    snprintf(resultHelp, strlen(before) + howMany + 1, result);
-    return resultHelp;
+    result[i] = '\0';
+    return result;
 }
 char *delete_char(char *str, int k)
 {
-    char *temp = (char *)malloc(sizeof(char) * (strlen(str) - 1));
-    char *tempHelp = (char *)malloc(sizeof(char) * (strlen(str) - 1));
+    char *temp = (char *)malloc(sizeof(char) * (strlen(str) ));
+    char *tempHelp = (char *)malloc(sizeof(char) * (strlen(str) ));
     for (int i = 0; i < k; i++)
     {
         temp[i] = str[i];
@@ -234,6 +244,6 @@ char *delete_char(char *str, int k)
     {
         temp[i - 1] = str[i];
     }
-    snprintf(tempHelp, (strlen(str)), temp);
-    return tempHelp;
+    temp[strlen(str)-1] = '\0';
+    return temp;
 }
