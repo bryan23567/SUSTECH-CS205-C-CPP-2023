@@ -12,19 +12,20 @@ int main(int argc, char const *argv[])
     {
         float *vec1 = (float *)malloc(n * sizeof(float));
         float *vec2 = (float *)malloc(n * sizeof(float));
-        for (size_t i = 0; i < n; i++)
+        for (int i = 0; i < n; i++)
         {
             vec1[i] = (float)(1 + rand() % 9) / (float)(1 + rand() % 9);
             vec2[i] = (float)(1 + rand() % 9) / (float)(1 + rand() % 9);
         }
         auto start = high_resolution_clock::now();
         float total = 0;
+
         for (int i = 0; i < n; i++)
         {
             total += vec1[i] * vec2[i];
         }
         auto stop = high_resolution_clock::now();
-        auto duration = duration_cast<microseconds>(stop - start);
+        auto duration = duration_cast<nanoseconds>(stop - start);
         float lenghtV1 = 0;
         for (int i = 0; i < n; i++)
         {
@@ -35,12 +36,14 @@ int main(int argc, char const *argv[])
         {
             lenghtV2 += vec2[i] * vec2[i];
         }
-
+        free(vec1);
+        free(vec2);
         lenghtV1 = sqrt(lenghtV1);
         lenghtV2 = sqrt(lenghtV2);
 
         cout << "Vector1 with lenght: " << lenghtV1 << " and "
-             << "Vector2 with lenght: " << lenghtV2 << " takes time " << duration.count() << " microseconds" << endl;
+             << "Vector2 with lenght: " << lenghtV2 << " The dot product is " << total
+             << " takes time " << duration.count() << " nanoseconds" << endl;
     }
 
     return 0;

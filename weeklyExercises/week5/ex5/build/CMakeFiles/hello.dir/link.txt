@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/hello.dir/mnt/c/Users/Livia/Documents/bugr/testok/sustechCppClass/cs205/weeklyExercises/week5/ex5/main.cpp.o CMakeFiles/hello.dir/mnt/c/Users/Livia/Documents/bugr/testok/sustechCppClass/cs205/weeklyExercises/week5/ex5/stufun.cpp.o -o hello 
