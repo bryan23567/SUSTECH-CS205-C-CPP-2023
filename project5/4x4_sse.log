@@ -1,0 +1,90 @@
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 100
+took time = 17ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 200
+took time = 167ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 300
+took time = 704ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 400
+took time = 1427ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 500
+took time = 2603ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 600
+took time = 2566ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 700
+took time = 6014ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 800
+took time = 7483ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 900
+took time = 18372ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 1000
+took time = 23147ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 1100
+took time = 32508ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 1200
+took time = 15461ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 1300
+took time = 22185ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 1400
+took time = 25729ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 1500
+took time = 32694ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 1600
+took time = 36441ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 1700
+took time = 45301ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 1800
+took time = 56844ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 1900
+took time = 63553ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 2000
+took time = 77837ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 2100
+took time = 97787ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 2200
+took time = 110986ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 2300
+took time = 112251ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 2400
+took time = 128453ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 2500
+took time = 172934ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 2600
+took time = 156482ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 2700
+took time = 201771ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 2800
+took time = 214939ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 2900
+took time = 248565ms
+Using register_blocking_4x4_SSE_dgemm
+m=n=k= 3000
+took time = 277106ms

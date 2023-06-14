@@ -1,0 +1,90 @@
+Using naive_dgemm
+m=n=k= 100
+took time = 3ms
+Using naive_dgemm
+m=n=k= 200
+took time = 55ms
+Using naive_dgemm
+m=n=k= 300
+took time = 120ms
+Using naive_dgemm
+m=n=k= 400
+took time = 305ms
+Using naive_dgemm
+m=n=k= 500
+took time = 704ms
+Using naive_dgemm
+m=n=k= 600
+took time = 1219ms
+Using naive_dgemm
+m=n=k= 700
+took time = 2130ms
+Using naive_dgemm
+m=n=k= 800
+took time = 3238ms
+Using naive_dgemm
+m=n=k= 900
+took time = 7458ms
+Using naive_dgemm
+m=n=k= 1000
+took time = 11607ms
+Using naive_dgemm
+m=n=k= 1100
+took time = 8819ms
+Using naive_dgemm
+m=n=k= 1200
+took time = 11560ms
+Using naive_dgemm
+m=n=k= 1300
+took time = 15480ms
+Using naive_dgemm
+m=n=k= 1400
+took time = 21931ms
+Using naive_dgemm
+m=n=k= 1500
+took time = 33379ms
+Using naive_dgemm
+m=n=k= 1600
+took time = 28318ms
+Using naive_dgemm
+m=n=k= 1700
+took time = 33272ms
+Using naive_dgemm
+m=n=k= 1800
+took time = 42351ms
+Using naive_dgemm
+m=n=k= 1900
+took time = 72926ms
+Using naive_dgemm
+m=n=k= 2000
+took time = 55644ms
+Using naive_dgemm
+m=n=k= 2100
+took time = 65013ms
+Using naive_dgemm
+m=n=k= 2200
+took time = 81823ms
+Using naive_dgemm
+m=n=k= 2300
+took time = 82836ms
+Using naive_dgemm
+m=n=k= 2400
+took time = 184855ms
+Using naive_dgemm
+m=n=k= 2500
+took time = 124088ms
+Using naive_dgemm
+m=n=k= 2600
+took time = 186348ms
+Using naive_dgemm
+m=n=k= 2700
+took time = 194143ms
+Using naive_dgemm
+m=n=k= 2800
+took time = 204171ms
+Using naive_dgemm
+m=n=k= 2900
+took time = 221271ms
+Using naive_dgemm
+m=n=k= 3000
+took time = 464501ms

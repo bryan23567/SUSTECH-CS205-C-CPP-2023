@@ -1,0 +1,75 @@
+Using register_blocking_2x2_dgemm
+m=n=k= 100
+took time = 5ms
+Using register_blocking_2x2_dgemm
+m=n=k= 200
+took time = 64ms
+Using register_blocking_2x2_dgemm
+m=n=k= 300
+took time = 243ms
+Using register_blocking_2x2_dgemm
+m=n=k= 400
+took time = 483ms
+Using register_blocking_2x2_dgemm
+m=n=k= 500
+took time = 1520ms
+Using register_blocking_2x2_dgemm
+m=n=k= 600
+took time = 2567ms
+Using register_blocking_2x2_dgemm
+m=n=k= 700
+took time = 4860ms
+Using register_blocking_2x2_dgemm
+m=n=k= 800
+took time = 7244ms
+Using register_blocking_2x2_dgemm
+m=n=k= 900
+took time = 11327ms
+Using register_blocking_2x2_dgemm
+m=n=k= 1000
+took time = 16501ms
+Using register_blocking_2x2_dgemm
+m=n=k= 1100
+took time = 21609ms
+Using register_blocking_2x2_dgemm
+m=n=k= 1200
+took time = 27919ms
+Using register_blocking_2x2_dgemm
+m=n=k= 1300
+took time = 36417ms
+Using register_blocking_2x2_dgemm
+m=n=k= 1400
+took time = 45354ms
+Using register_blocking_2x2_dgemm
+m=n=k= 1500
+took time = 57265ms
+Using register_blocking_2x2_dgemm
+m=n=k= 1600
+took time = 69964ms
+Using register_blocking_2x2_dgemm
+m=n=k= 1700
+took time = 84102ms
+Using register_blocking_2x2_dgemm
+m=n=k= 1800
+took time = 90085ms
+Using register_blocking_2x2_dgemm
+m=n=k= 1900
+took time = 130305ms
+Using register_blocking_2x2_dgemm
+m=n=k= 2000
+took time = 141555ms
+Using register_blocking_2x2_dgemm
+m=n=k= 2100
+took time = 196524ms
+Using register_blocking_2x2_dgemm
+m=n=k= 2200
+took time = 208768ms
+Using register_blocking_2x2_dgemm
+m=n=k= 2300
+took time = 208472ms
+Using register_blocking_2x2_dgemm
+m=n=k= 2400
+took time = 248438ms
+Using register_blocking_2x2_dgemm
+m=n=k= 2500
+took time = 364757ms

@@ -30,7 +30,7 @@ int main(int argc, char const *argv[])
     p2[2] = 3.0f;
     p1[nSize - 1] = 2.0f;
     p2[nSize - 1] = 1.1f;
-
+    
     addvector(p1, p2, result, nSize);
     // addvector(p1, p2,result, nSize);
 

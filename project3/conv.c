@@ -112,7 +112,8 @@ MatrixData convolution1d(MatrixData *inputMatrix, MatrixData *kernel, int start)
                 break;
             }
         }
-
+        // printMatrix(kernel);
+        // printf("size of temp matrix %d\n", tempMatrixSize);
         output[output_matrix_index++] = dotproduct(tempMatrix, kernel->data, tempMatrixSize);
         if (start == (inputMatrix->width * k) - kernel->width + firstInd)
         {
@@ -150,7 +151,8 @@ MatrixData convolutionNd(MatrixData *inputMatrix, MatrixData *kernel)
     memset(output.data, 0, outputSize * sizeof(float));
     for (int i = 0, k = 0; i < inputMatrix->channels; i++, k += oneMatrixsize)
     {
-
+        // printMatrix(kernel);
+        // printf("\n");
         temp = convolution1d(inputMatrix, kernel, k);
 
         if (vecAdd(output.data, temp.data, outputSize) == false)
